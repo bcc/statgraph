@@ -1,0 +1,69 @@
+###########################
+# Default config options
+#
+# All these are optional, and override the defaults
+
+## Number of seconds from "now" to generate graphs
+## Default 3h 1d 1w 1m 1y
+config.offsets = 10800 86400 604800 2419200 31536000
+
+## Location for graphs and rrd files
+config.graphlocation = graphs/
+config.rrdlocation = rrd/
+
+## Default port for 'connect' method
+config.defaultport = 27001
+
+## Colours for graphs
+# contrasty stack colours, eg cpu.
+config.colour.stack1 = #FF0000
+config.colour.stack2 = #FFFF00
+config.colour.stack3 = #00FFFF
+config.colour.stack4 = #00FF00
+config.colour.stack5 = #0000FF
+
+# load colours
+config.colour.load1 = #CECFFF
+config.colour.load5 = #7375FF
+config.colour.load15 = #0000FF
+
+# colours for line on top of area graphs, like swap/mem
+config.colour.area = #CECFFF
+config.colour.line = #0000FF
+
+# in refers to rx, bytes_read, etc...
+config.colour.in = #00FF00
+config.colour.out = #0000FF
+
+###########################
+# Hosts section
+#
+# REQUIRED: hosts.NAME.displayname
+# REQUIRED: hosts.NAME.method
+# OPTIONAL: hosts.NAME.comment
+# OPTIONAL: hosts.NAME.ignore
+#
+# if using method = exec
+# hosts.NAME.execcommand is REQUIRED
+#
+# if using method = connect
+# hosts.NAME.hostname is REQUIRED
+# hosts.NAME.port is OPTIONAL
+
+hosts.kitten.displayname = kitten.example.com
+hosts.kitten.method = connect
+hosts.kitten.hostname = kitten.example.com
+hosts.kitten.port = 27001
+hosts.kitten.comment = development machine
+hosts.kitten.ignore = net.dummy0 net.lo
+
+hosts.nero.displayname = nero.example.com
+hosts.nero.method = exec
+hosts.nero.execcommand = ssh nero.example.com /usr/bin/statgrab
+hosts.nero.comment = some random server
+
+hosts.localhost.displayname = localhost.example.com
+hosts.localhost.method = exec
+hosts.localhost.execcommand = /usr/bin/statgrab
+hosts.localhost.comment = This host
+

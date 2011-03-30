@@ -1,6 +1,6 @@
-= Statgraph =
+# Statgraph #
 
-== Introduction ==
+## Introduction ##
 
 Statgraph is a simple tool for graphing usage statistic from a number of
 unix hosts. 
@@ -11,7 +11,8 @@ Solaris and FreeBSD. In theory, any platform supported by libstatgrab
 should work.
 
 
-== Usage ==
+## Usage ##
+
 To make use of statgraph, you'll need perl and RRDtool, along with the
 perl bindings for RRDtool. On debian, these are included in the
 'librrds-perl' package. 
@@ -25,7 +26,7 @@ TCP connection to the target host, or by executing a command of your
 choice. This does mean you can make use of ssh with an ssh key if you
 want to keep open ports to a minimum. 
 
-=== Direct TCP ===
+### Direct TCP ###
 
 If you're collecting via TCP, the easiest way to set things up is to run
 statgrab from inetd. 
@@ -45,7 +46,7 @@ and exit, but there is always a risk with exposing a service. As always,
 you should seriously consider firewalling access to this port to trusted
 hosts only. 
 
-=== Running a command ===
+### Running a command ###
 
 This has a bit more overhead, but does mean minimal changes to the
 server you're connecting to. Any command that generates statgrab output
@@ -53,13 +54,13 @@ is fine. The simplest option is something like:
 
     ssh -i ssh_key user@hostname /usr/bin/statgrab
 
-=== Configuration File ===
+### Configuration File ###
 
 The configuration for statgraph is statgraph.conf - this should be
 fairly self-explanatory, and a few examples are provided in
 statgraph.conf.example
 
-== Running ==
+## Running ##
 
 To check it's all working, run ./statgraph.pl manually. If that looks
 good, add to cron and run once per minute. It will email you if a
@@ -74,7 +75,7 @@ whatever you've configured the graphs to live. By default this is the
 This directory can be shared by a webserver and contains no dynamic code
 whatsoever. 
 
-== Known Issues ==
+## Known Issues ##
 
  * Statgraph is insanely spammy if a host is down, unless you redirect
    output
@@ -94,7 +95,7 @@ whatsoever.
    timeouts could be more effective - occasionally processes do get
    wedged if the child does, but it's rare. 
 
-== License ==
+## License ##
 
 Statgraph is released under the GPLv2 license. See the COPYING file for
 details.
